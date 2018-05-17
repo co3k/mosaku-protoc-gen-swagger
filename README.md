@@ -1,4 +1,4 @@
-# tetete
+# .proto を protoc-gen-swagger とか噛ましてどうにかいい感じにできないか模索する奴
 
 とりあえずインストール
 
@@ -25,4 +25,10 @@ $ protoc -I. -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/go
 
 ```
 $ npx widdershins mbox.swagger.json -o mbox.md
+```
+
+Swagger によるコードとドキュメントの生成。ぶっちゃけこれだけで充分か？
+
+```
+$ cd swagger-codegen-dist; swagger-codegen generate -i ../mbox.swagger.json -l go
 ```

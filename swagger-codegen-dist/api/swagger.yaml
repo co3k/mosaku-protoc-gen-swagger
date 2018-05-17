@@ -1,0 +1,71 @@
+---
+swagger: "2.0"
+info:
+  version: "version not set"
+  title: "mbox.proto"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /message:
+    get:
+      tags:
+      - "Mail"
+      operationId: "Receive"
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: "(streaming responses)"
+          schema:
+            $ref: "#/definitions/mboxMessage"
+    post:
+      tags:
+      - "Mail"
+      operationId: "Send"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/mboxMessage"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/mboxResult"
+definitions:
+  mboxMessage:
+    type: "object"
+    properties:
+      from:
+        type: "string"
+      to:
+        type: "array"
+        items:
+          type: "string"
+      subject:
+        type: "string"
+      text:
+        type: "string"
+      html:
+        type: "string"
+    example:
+      subject: "subject"
+      from: "from"
+      html: "html"
+      to:
+      - "to"
+      - "to"
+      text: "text"
+  mboxResult:
+    type: "object"
