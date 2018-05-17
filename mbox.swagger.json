@@ -14,7 +14,56 @@
   "produces": [
     "application/json"
   ],
-  "paths": {},
+  "paths": {
+    "/message": {
+      "get": {
+        "operationId": "Receive",
+        "responses": {
+          "200": {
+            "description": "(streaming responses)",
+            "schema": {
+              "$ref": "#/definitions/mboxMessage"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Mail"
+        ]
+      },
+      "post": {
+        "operationId": "Send",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/mboxResult"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mboxMessage"
+            }
+          }
+        ],
+        "tags": [
+          "Mail"
+        ]
+      }
+    }
+  },
   "definitions": {
     "mboxMessage": {
       "type": "object",

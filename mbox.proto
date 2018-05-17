@@ -2,9 +2,20 @@ syntax = "proto3";
 
 package mbox;
 
+import "google/api/annotations.proto";
+
 service Mail {
-  rpc Send (Message) returns (Result);
-  rpc Receive (Folder) returns (stream Message);
+  rpc Send (Message) returns (Result) {
+    option(google.api.http) = {
+      post: "/message"
+      body: "*"
+    };
+  };
+  rpc Receive (Folder) returns (stream Message) {
+    option(google.api.http) = {
+      get: "/message"
+    };
+  };
 }
 
 message Message {
