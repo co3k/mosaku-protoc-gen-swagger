@@ -26,7 +26,7 @@ paths:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/mboxBook"
+            $ref: "#/definitions/shelvesBook"
   /v1/{parent}/books:
     post:
       tags:
@@ -42,15 +42,15 @@ paths:
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/mboxBook"
+          $ref: "#/definitions/shelvesBook"
         x-exportParamName: "Body"
       responses:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/mboxBook"
+            $ref: "#/definitions/shelvesBook"
 definitions:
-  mboxBook:
+  shelvesBook:
     type: "object"
     properties:
       name:

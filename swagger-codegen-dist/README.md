@@ -27,7 +27,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [MboxBook](docs/MboxBook.md)
+ - [ShelvesBook](docs/ShelvesBook.md)
 
 
 ## Documentation For Authorization

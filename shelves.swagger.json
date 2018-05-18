@@ -1,0 +1,86 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "shelves.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/{name}": {
+      "get": {
+        "operationId": "GetBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LibraryService"
+        ]
+      }
+    },
+    "/v1/{parent}/books": {
+      "post": {
+        "operationId": "CreateBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "parent",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        ],
+        "tags": [
+          "LibraryService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "shelvesBook": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Resource name of the book. It must have the format of \"shelves/*/books/*\".\nFor example: \"shelves/shelf1/books/book2\"."
+        }
+      }
+    }
+  }
+}
