@@ -21,14 +21,13 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MailApi* | [**Receive**](docs/MailApi.md#receive) | **Get** /message | 
-*MailApi* | [**Send**](docs/MailApi.md#send) | **Post** /message | 
+*LibraryServiceApi* | [**CreateBook**](docs/LibraryServiceApi.md#createbook) | **Post** /v1/{parent}/books | 
+*LibraryServiceApi* | [**GetBook**](docs/LibraryServiceApi.md#getbook) | **Get** /v1/{name} | 
 
 
 ## Documentation For Models
 
- - [MboxMessage](docs/MboxMessage.md)
- - [MboxResult](docs/MboxResult.md)
+ - [MboxBook](docs/MboxBook.md)
 
 
 ## Documentation For Authorization

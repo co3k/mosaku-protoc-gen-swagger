@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   version: "version not set"
-  title: "mbox.proto"
+  title: "shelves.proto"
 schemes:
 - "http"
 - "https"
@@ -11,61 +11,51 @@ consumes:
 produces:
 - "application/json"
 paths:
-  /message:
+  /v1/{name}:
     get:
       tags:
-      - "Mail"
-      operationId: "Receive"
+      - "LibraryService"
+      operationId: "GetBook"
       parameters:
       - name: "name"
-        in: "query"
-        required: false
+        in: "path"
+        required: true
         type: "string"
         x-exportParamName: "Name"
       responses:
         200:
-          description: "(streaming responses)"
+          description: ""
           schema:
-            $ref: "#/definitions/mboxMessage"
+            $ref: "#/definitions/mboxBook"
+  /v1/{parent}/books:
     post:
       tags:
-      - "Mail"
-      operationId: "Send"
+      - "LibraryService"
+      operationId: "CreateBook"
       parameters:
+      - name: "parent"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Parent"
       - in: "body"
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/mboxMessage"
+          $ref: "#/definitions/mboxBook"
         x-exportParamName: "Body"
       responses:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/mboxResult"
+            $ref: "#/definitions/mboxBook"
 definitions:
-  mboxMessage:
+  mboxBook:
     type: "object"
     properties:
-      from:
+      name:
         type: "string"
-      to:
-        type: "array"
-        items:
-          type: "string"
-      subject:
-        type: "string"
-      text:
-        type: "string"
-      html:
-        type: "string"
+        description: "Resource name of the book. It must have the format of \"shelves/*/books/*\"\
+          .\nFor example: \"shelves/shelf1/books/book2\"."
     example:
-      subject: "subject"
-      from: "from"
-      html: "html"
-      to:
-      - "to"
-      - "to"
-      text: "text"
-  mboxResult:
-    type: "object"
+      name: "name"
