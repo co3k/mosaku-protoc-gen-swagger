@@ -15,6 +15,38 @@
     "application/json"
   ],
   "paths": {
+    "/v1/{book.name}": {
+      "patch": {
+        "operationId": "UpdateBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "book.name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        ],
+        "tags": [
+          "LibraryService"
+        ]
+      }
+    },
     "/v1/{name}": {
       "get": {
         "operationId": "GetBook",
@@ -23,6 +55,28 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/shelvesBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LibraryService"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteBook",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
             }
           }
         },
@@ -73,12 +127,33 @@
     }
   },
   "definitions": {
+    "protobufEmpty": {
+      "type": "object",
+      "description": "service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "title": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:"
+    },
     "shelvesBook": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
           "description": "Resource name of the book. It must have the format of \"shelves/*/books/*\".\nFor example: \"shelves/shelf1/books/book2\"."
+        }
+      }
+    },
+    "shelvesListBooksResponse": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/shelvesBook"
+          },
+          "description": "The field name should match the noun \"books\" in the method name.  There\nwill be a maximum number of items returned based on the page_size field\nin the request."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."
         }
       }
     }

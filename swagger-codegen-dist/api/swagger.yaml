@@ -11,6 +11,28 @@ consumes:
 produces:
 - "application/json"
 paths:
+  /v1/{book.name}:
+    patch:
+      tags:
+      - "LibraryService"
+      operationId: "UpdateBook"
+      parameters:
+      - name: "book.name"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "BookName"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/shelvesBook"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/shelvesBook"
   /v1/{name}:
     get:
       tags:
@@ -27,6 +49,21 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/shelvesBook"
+    delete:
+      tags:
+      - "LibraryService"
+      operationId: "DeleteBook"
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/protobufEmpty"
   /v1/{parent}/books:
     post:
       tags:
@@ -50,6 +87,13 @@ paths:
           schema:
             $ref: "#/definitions/shelvesBook"
 definitions:
+  protobufEmpty:
+    type: "object"
+    title: "A generic empty message that you can re-use to avoid defining duplicated\n\
+      empty messages in your APIs. A typical example is to use it as the request\n\
+      or the response type of an API method. For instance:"
+    description: "service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n\
+      \    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
   shelvesBook:
     type: "object"
     properties:
@@ -59,3 +103,17 @@ definitions:
           .\nFor example: \"shelves/shelf1/books/book2\"."
     example:
       name: "name"
+  shelvesListBooksResponse:
+    type: "object"
+    properties:
+      books:
+        type: "array"
+        description: "The field name should match the noun \"books\" in the method\
+          \ name.  There\nwill be a maximum number of items returned based on the\
+          \ page_size field\nin the request."
+        items:
+          $ref: "#/definitions/shelvesBook"
+      next_page_token:
+        type: "string"
+        description: "Token to retrieve the next page of results, or empty if there\
+          \ are no\nmore results in the list."

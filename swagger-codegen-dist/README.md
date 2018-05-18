@@ -22,12 +22,16 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *LibraryServiceApi* | [**CreateBook**](docs/LibraryServiceApi.md#createbook) | **Post** /v1/{parent}/books | 
+*LibraryServiceApi* | [**DeleteBook**](docs/LibraryServiceApi.md#deletebook) | **Delete** /v1/{name} | 
 *LibraryServiceApi* | [**GetBook**](docs/LibraryServiceApi.md#getbook) | **Get** /v1/{name} | 
+*LibraryServiceApi* | [**UpdateBook**](docs/LibraryServiceApi.md#updatebook) | **Patch** /v1/{book.name} | 
 
 
 ## Documentation For Models
 
+ - [ProtobufEmpty](docs/ProtobufEmpty.md)
  - [ShelvesBook](docs/ShelvesBook.md)
+ - [ShelvesListBooksResponse](docs/ShelvesListBooksResponse.md)
 
 
 ## Documentation For Authorization

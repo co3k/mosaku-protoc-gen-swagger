@@ -3,19 +3,72 @@ syntax = "proto3";
 package shelves;
 
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 service LibraryService {
+  rpc ListBooks(ListBooksRequest) returns (ListBooksResponse) {
+  };
+
   rpc GetBook(GetBookRequest) returns (Book) {
     option (google.api.http) = {
       get: "/v1/{name=shelves/*/books/*}"
     };
   };
+
   rpc CreateBook(CreateBookRequest) returns (Book) {
     option (google.api.http) = {
       post: "/v1/{parent=shelves/*}/books"
       body: "book"
     };
   };
+
+  rpc UpdateBook(UpdateBookRequest) returns (Book) {
+    // Update maps to HTTP PATCH. Resource name is mapped to a URL path.
+    // Resource is contained in the HTTP request body.
+    option (google.api.http) = {
+      // Note the URL template variable which captures the resource name of the
+      // book to update.
+      patch: "/v1/{book.name=shelves/*/books/*}"
+      body: "book"
+    };
+  };
+
+  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {
+    // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+    // There is no request body.
+    option (google.api.http) = {
+      // Note the URL template variable capturing the multi-segment name of the
+      // book resource to be deleted, such as "shelves/shelf1/books/book2"
+      delete: "/v1/{name=shelves/*/books/*}"
+    };
+  };
+}
+
+message ListBooksRequest {
+  // The parent resource name, for example, "shelves/shelf1".
+  string parent = 1;
+
+  // The maximum number of items to return.
+  int32 page_size = 2;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 3;
+}
+
+message ListBooksResponse {
+  // The field name should match the noun "books" in the method name.  There
+  // will be a maximum number of items returned based on the page_size field
+  // in the request.
+  repeated Book books = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results in the list.
+  string next_page_token = 2;
+}
+
+message UpdateBookRequest {
+  // The book resource which replaces the resource on the server.
+  Book book = 1;
 }
 
 message Book {
@@ -37,4 +90,10 @@ message CreateBookRequest {
   string parent = 1;
   // The Book resource to be created. Client must not set the `Book.name` field.
   Book book = 2;
+}
+
+message DeleteBookRequest {
+  // The resource name of the book to be deleted, for example:
+  // "shelves/shelf1/books/book2"
+  string name = 1;
 }
