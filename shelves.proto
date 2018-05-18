@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package shelves;
+package co3k.shelves.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";

@@ -30,8 +30,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ProtobufEmpty](docs/ProtobufEmpty.md)
- - [ShelvesBook](docs/ShelvesBook.md)
- - [ShelvesListBooksResponse](docs/ShelvesListBooksResponse.md)
+ - [V1Book](docs/V1Book.md)
+ - [V1ListBooksResponse](docs/V1ListBooksResponse.md)
 
 
 ## Documentation For Authorization

@@ -26,13 +26,13 @@ paths:
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/shelvesBook"
+          $ref: "#/definitions/v1Book"
         x-exportParamName: "Body"
       responses:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/shelvesBook"
+            $ref: "#/definitions/v1Book"
   /v1/{name}:
     get:
       tags:
@@ -48,7 +48,7 @@ paths:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/shelvesBook"
+            $ref: "#/definitions/v1Book"
     delete:
       tags:
       - "LibraryService"
@@ -79,13 +79,13 @@ paths:
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/shelvesBook"
+          $ref: "#/definitions/v1Book"
         x-exportParamName: "Body"
       responses:
         200:
           description: ""
           schema:
-            $ref: "#/definitions/shelvesBook"
+            $ref: "#/definitions/v1Book"
 definitions:
   protobufEmpty:
     type: "object"
@@ -94,7 +94,7 @@ definitions:
       or the response type of an API method. For instance:"
     description: "service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n\
       \    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
-  shelvesBook:
+  v1Book:
     type: "object"
     properties:
       name:
@@ -103,7 +103,7 @@ definitions:
           .\nFor example: \"shelves/shelf1/books/book2\"."
     example:
       name: "name"
-  shelvesListBooksResponse:
+  v1ListBooksResponse:
     type: "object"
     properties:
       books:
@@ -112,7 +112,7 @@ definitions:
           \ name.  There\nwill be a maximum number of items returned based on the\
           \ page_size field\nin the request."
         items:
-          $ref: "#/definitions/shelvesBook"
+          $ref: "#/definitions/v1Book"
       next_page_token:
         type: "string"
         description: "Token to retrieve the next page of results, or empty if there\

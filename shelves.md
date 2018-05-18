@@ -180,7 +180,7 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |book.name|path|string|true|none|
-|body|body|[shelvesBook](#schemashelvesbook)|true|none|
+|body|body|[v1Book](#schemav1book)|true|none|
 
 > Example responses
 
@@ -196,7 +196,7 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[shelvesBook](#schemashelvesbook)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
 <aside class="success">
 This operation does not require authentication
@@ -358,7 +358,7 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[shelvesBook](#schemashelvesbook)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
 <aside class="success">
 This operation does not require authentication
@@ -681,7 +681,7 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |parent|path|string|true|none|
-|body|body|[shelvesBook](#schemashelvesbook)|true|none|
+|body|body|[v1Book](#schemav1book)|true|none|
 
 > Example responses
 
@@ -697,7 +697,7 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[shelvesBook](#schemashelvesbook)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
 <aside class="success">
 This operation does not require authentication
@@ -724,9 +724,9 @@ The JSON representation for `Empty` is empty JSON object `{}`.*
 
 *None*
 
-<h2 id="tocSshelvesbook">shelvesBook</h2>
+<h2 id="tocSv1book">v1Book</h2>
 
-<a id="schemashelvesbook"></a>
+<a id="schemav1book"></a>
 
 ```json
 {
@@ -741,9 +741,9 @@ The JSON representation for `Empty` is empty JSON object `{}`.*
 |---|---|---|---|---|
 |name|string|false|none|Resource name of the book. It must have the format of "shelves/*/books/*". For example: "shelves/shelf1/books/book2".|
 
-<h2 id="tocSshelveslistbooksresponse">shelvesListBooksResponse</h2>
+<h2 id="tocSv1listbooksresponse">v1ListBooksResponse</h2>
 
-<a id="schemashelveslistbooksresponse"></a>
+<a id="schemav1listbooksresponse"></a>
 
 ```json
 {
@@ -761,6 +761,6 @@ The JSON representation for `Empty` is empty JSON object `{}`.*
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|books|[[shelvesBook](#schemashelvesbook)]|false|none|The field name should match the noun "books" in the method name.  There will be a maximum number of items returned based on the page_size field in the request.|
+|books|[[v1Book](#schemav1book)]|false|none|The field name should match the noun "books" in the method name.  There will be a maximum number of items returned based on the page_size field in the request.|
 |next_page_token|string|false|none|Token to retrieve the next page of results, or empty if there are no more results in the list.|
 

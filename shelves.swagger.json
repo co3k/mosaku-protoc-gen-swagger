@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/shelvesBook"
+              "$ref": "#/definitions/v1Book"
             }
           }
         },
@@ -38,7 +38,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/shelvesBook"
+              "$ref": "#/definitions/v1Book"
             }
           }
         ],
@@ -54,7 +54,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/shelvesBook"
+              "$ref": "#/definitions/v1Book"
             }
           }
         },
@@ -100,7 +100,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/shelvesBook"
+              "$ref": "#/definitions/v1Book"
             }
           }
         },
@@ -116,7 +116,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/shelvesBook"
+              "$ref": "#/definitions/v1Book"
             }
           }
         ],
@@ -132,7 +132,7 @@
       "description": "service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "title": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:"
     },
-    "shelvesBook": {
+    "v1Book": {
       "type": "object",
       "properties": {
         "name": {
@@ -141,13 +141,13 @@
         }
       }
     },
-    "shelvesListBooksResponse": {
+    "v1ListBooksResponse": {
       "type": "object",
       "properties": {
         "books": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/shelvesBook"
+            "$ref": "#/definitions/v1Book"
           },
           "description": "The field name should match the noun \"books\" in the method name.  There\nwill be a maximum number of items returned based on the page_size field\nin the request."
         },

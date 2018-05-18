@@ -31,14 +31,14 @@ type LibraryServiceApiService service
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param parent 
  @param body 
- @return ShelvesBook*/
-func (a *LibraryServiceApiService) CreateBook(ctx context.Context, parent string, body ShelvesBook) (ShelvesBook,  *http.Response, error) {
+ @return V1Book*/
+func (a *LibraryServiceApiService) CreateBook(ctx context.Context, parent string, body V1Book) (V1Book,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  ShelvesBook
+	 	successPayload  V1Book
 	)
 
 	// create path and map variables
@@ -161,14 +161,14 @@ func (a *LibraryServiceApiService) DeleteBook(ctx context.Context, name string) 
 /* LibraryServiceApiService 
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param name 
- @return ShelvesBook*/
-func (a *LibraryServiceApiService) GetBook(ctx context.Context, name string) (ShelvesBook,  *http.Response, error) {
+ @return V1Book*/
+func (a *LibraryServiceApiService) GetBook(ctx context.Context, name string) (V1Book,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  ShelvesBook
+	 	successPayload  V1Book
 	)
 
 	// create path and map variables
@@ -226,14 +226,14 @@ func (a *LibraryServiceApiService) GetBook(ctx context.Context, name string) (Sh
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param bookName 
  @param body 
- @return ShelvesBook*/
-func (a *LibraryServiceApiService) UpdateBook(ctx context.Context, bookName string, body ShelvesBook) (ShelvesBook,  *http.Response, error) {
+ @return V1Book*/
+func (a *LibraryServiceApiService) UpdateBook(ctx context.Context, bookName string, body V1Book) (V1Book,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Patch")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  ShelvesBook
+	 	successPayload  V1Book
 	)
 
 	// create path and map variables

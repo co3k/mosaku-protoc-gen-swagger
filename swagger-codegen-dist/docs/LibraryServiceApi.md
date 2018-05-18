@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **CreateBook**
-> ShelvesBook CreateBook(ctx, parent, body)
+> V1Book CreateBook(ctx, parent, body)
 
 
 ### Required Parameters
@@ -20,11 +20,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **parent** | **string**|  | 
-  **body** | [**ShelvesBook**](ShelvesBook.md)|  | 
+  **body** | [**V1Book**](V1Book.md)|  | 
 
 ### Return type
 
-[**ShelvesBook**](shelvesBook.md)
+[**V1Book**](v1Book.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBook**
-> ShelvesBook GetBook(ctx, name)
+> V1Book GetBook(ctx, name)
 
 
 ### Required Parameters
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShelvesBook**](shelvesBook.md)
+[**V1Book**](v1Book.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBook**
-> ShelvesBook UpdateBook(ctx, bookName, body)
+> V1Book UpdateBook(ctx, bookName, body)
 
 
 ### Required Parameters
@@ -99,11 +99,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
   **bookName** | **string**|  | 
-  **body** | [**ShelvesBook**](ShelvesBook.md)|  | 
+  **body** | [**V1Book**](V1Book.md)|  | 
 
 ### Return type
 
-[**ShelvesBook**](shelvesBook.md)
+[**V1Book**](v1Book.md)
 
 ### Authorization
 
