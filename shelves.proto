@@ -4,9 +4,43 @@ package co3k.shelves.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "protoc-gen-swagger/options/annotations.proto";
 
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+  info: {
+    title: 'gRPC -> Swagger 練習';
+    version: '1.0';
+  };
+  schemes: HTTPS;
+  consumes: "application/json";
+  produces: "application/json";
+  security_definitions: {
+    security: {
+      key: "OAuth2";
+      value: {
+        type: TYPE_OAUTH2;
+        flow: FLOW_ACCESS_CODE;
+        authorization_url: "https://example.com/oauth/authorize";
+        token_url: "https://example.com/oauth/token";
+      };
+    };
+  };
+  security: {
+    security_requirement: {
+      key: "OAuth2";
+      value: {
+      };
+    };
+  };
+};
+
+// LibraryService はライブラリを表現するサービスです
 service LibraryService {
+  // ListBooks は本を列挙します
   rpc ListBooks(ListBooksRequest) returns (ListBooksResponse) {
+    option (google.api.http) = {
+      get: "/v1/{parent=shelves/*}/books"
+    };
   };
 
   rpc GetBook(GetBookRequest) returns (Book) {

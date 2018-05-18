@@ -1,5 +1,5 @@
 ---
-title: shelves.proto
+title: gRPC -> Swagger 練習
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -17,11 +17,22 @@ headingLevel: 2
 
 ---
 
-<h1 id="shelves.proto">shelves.proto version not set</h1>
+<h1 id="gRPC-->-Swagger-練習">gRPC -> Swagger 練習 v1.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-<h1 id="shelves.proto-LibraryService">LibraryService</h1>
+# Authentication
+
+- oAuth2 authentication. 
+
+    - Flow: authorizationCode
+    - Authorization URL = [https://example.com/oauth/authorize](https://example.com/oauth/authorize)
+    - Token URL = [https://example.com/oauth/token](https://example.com/oauth/token)
+
+|Scope|Scope Description|
+|---|---|
+
+<h1 id="gRPC-->-Swagger-練習-LibraryService">LibraryService</h1>
 
 ## UpdateBook
 
@@ -33,7 +44,8 @@ headingLevel: 2
 # You can also use wget
 curl -X PATCH ///v1/{book.name} \
   -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -48,7 +60,8 @@ Accept: application/json
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -71,7 +84,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -95,7 +109,8 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json',
-  'Accept' => 'application/json'
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.patch '///v1/{book.name}',
@@ -110,7 +125,8 @@ p JSON.parse(result)
 import requests
 headers = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json'
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.patch('///v1/{book.name}', params={
@@ -151,6 +167,7 @@ func main() {
     headers := map[string][]string{
         "Content-Type": []string{"application/json"},
         "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
         
     }
 
@@ -198,8 +215,9 @@ func main() {
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+OAuth2
 </aside>
 
 ## GetBook
@@ -211,7 +229,8 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X GET ///v1/{name} \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -225,7 +244,8 @@ Accept: application/json
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -245,7 +265,8 @@ $.ajax({
 const request = require('node-fetch');
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -268,7 +289,8 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Accept' => 'application/json'
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.get '///v1/{name}',
@@ -282,7 +304,8 @@ p JSON.parse(result)
 ```python
 import requests
 headers = {
-  'Accept': 'application/json'
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.get('///v1/{name}', params={
@@ -322,6 +345,7 @@ func main() {
 
     headers := map[string][]string{
         "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
         
     }
 
@@ -360,8 +384,9 @@ func main() {
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+OAuth2
 </aside>
 
 ## DeleteBook
@@ -373,7 +398,8 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X DELETE ///v1/{name} \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -387,7 +413,8 @@ Accept: application/json
 
 ```javascript
 var headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -407,7 +434,8 @@ $.ajax({
 const request = require('node-fetch');
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -430,7 +458,8 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Accept' => 'application/json'
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.delete '///v1/{name}',
@@ -444,7 +473,8 @@ p JSON.parse(result)
 ```python
 import requests
 headers = {
-  'Accept': 'application/json'
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.delete('///v1/{name}', params={
@@ -484,6 +514,7 @@ func main() {
 
     headers := map[string][]string{
         "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
         
     }
 
@@ -520,8 +551,187 @@ func main() {
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[protobufEmpty](#schemaprotobufempty)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+OAuth2
+</aside>
+
+## ListBooks
+
+<a id="opIdListBooks"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET ///v1/{parent}/books \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
+
+```
+
+```http
+GET ///v1/{parent}/books HTTP/1.1
+Host: null
+
+Accept: application/json
+
+```
+
+```javascript
+var headers = {
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
+
+};
+
+$.ajax({
+  url: '///v1/{parent}/books',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
+
+};
+
+fetch('///v1/{parent}/books',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
+}
+
+result = RestClient.get '///v1/{parent}/books',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
+}
+
+r = requests.get('///v1/{parent}/books', params={
+
+}, headers = headers)
+
+print r.json()
+
+```
+
+```java
+URL obj = new URL("///v1/{parent}/books");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
+        
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "///v1/{parent}/books", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /v1/{parent}/books`
+
+*ListBooks は本を列挙します*
+
+<h3 id="listbooks-parameters">Parameters</h3>
+
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|parent|path|string|true|none|
+|page_size|query|integer(int32)|false|The maximum number of items to return.|
+|page_token|query|string|false|The next_page_token value returned from a previous List request, if any.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "books": [
+    {
+      "name": "string"
+    }
+  ],
+  "next_page_token": "string"
+}
+```
+
+<h3 id="listbooks-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1ListBooksResponse](#schemav1listbooksresponse)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+OAuth2
 </aside>
 
 ## CreateBook
@@ -534,7 +744,8 @@ This operation does not require authentication
 # You can also use wget
 curl -X POST ///v1/{parent}/books \
   -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
@@ -549,7 +760,8 @@ Accept: application/json
 ```javascript
 var headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -572,7 +784,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/json',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
 
 };
 
@@ -596,7 +809,8 @@ require 'json'
 
 headers = {
   'Content-Type' => 'application/json',
-  'Accept' => 'application/json'
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
 }
 
 result = RestClient.post '///v1/{parent}/books',
@@ -611,7 +825,8 @@ p JSON.parse(result)
 import requests
 headers = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json'
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
 }
 
 r = requests.post('///v1/{parent}/books', params={
@@ -652,6 +867,7 @@ func main() {
     headers := map[string][]string{
         "Content-Type": []string{"application/json"},
         "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
         
     }
 
@@ -699,8 +915,9 @@ func main() {
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[v1Book](#schemav1book)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+OAuth2
 </aside>
 
 # Schemas

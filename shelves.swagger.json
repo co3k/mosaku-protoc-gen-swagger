@@ -1,11 +1,10 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "shelves.proto",
-    "version": "version not set"
+    "title": "gRPC -\u003e Swagger 練習",
+    "version": "1.0"
   },
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -94,6 +93,44 @@
       }
     },
     "/v1/{parent}/books": {
+      "get": {
+        "summary": "ListBooks は本を列挙します",
+        "operationId": "ListBooks",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1ListBooksResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "parent",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "The maximum number of items to return.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_token",
+            "description": "The next_page_token value returned from a previous List request, if any.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LibraryService"
+        ]
+      },
       "post": {
         "operationId": "CreateBook",
         "responses": {
@@ -157,5 +194,18 @@
         }
       }
     }
-  }
+  },
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://example.com/oauth/authorize",
+      "tokenUrl": "https://example.com/oauth/token"
+    }
+  },
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ]
 }

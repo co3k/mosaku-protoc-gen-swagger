@@ -1,15 +1,16 @@
 ---
 swagger: "2.0"
 info:
-  version: "version not set"
-  title: "shelves.proto"
+  version: "1.0"
+  title: "gRPC -> Swagger 練習"
 schemes:
-- "http"
 - "https"
 consumes:
 - "application/json"
 produces:
 - "application/json"
+security:
+- OAuth2: []
 paths:
   /v1/{book.name}:
     patch:
@@ -65,6 +66,36 @@ paths:
           schema:
             $ref: "#/definitions/protobufEmpty"
   /v1/{parent}/books:
+    get:
+      tags:
+      - "LibraryService"
+      summary: "ListBooks は本を列挙します"
+      operationId: "ListBooks"
+      parameters:
+      - name: "parent"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Parent"
+      - name: "page_size"
+        in: "query"
+        description: "The maximum number of items to return."
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "PageSize"
+      - name: "page_token"
+        in: "query"
+        description: "The next_page_token value returned from a previous List request,\
+          \ if any."
+        required: false
+        type: "string"
+        x-exportParamName: "PageToken"
+      responses:
+        200:
+          description: ""
+          schema:
+            $ref: "#/definitions/v1ListBooksResponse"
     post:
       tags:
       - "LibraryService"
@@ -86,6 +117,12 @@ paths:
           description: ""
           schema:
             $ref: "#/definitions/v1Book"
+securityDefinitions:
+  OAuth2:
+    type: "oauth2"
+    authorizationUrl: "https://example.com/oauth/authorize"
+    tokenUrl: "https://example.com/oauth/token"
+    flow: "accessCode"
 definitions:
   protobufEmpty:
     type: "object"
@@ -117,3 +154,8 @@ definitions:
         type: "string"
         description: "Token to retrieve the next page of results, or empty if there\
           \ are no\nmore results in the list."
+    example:
+      books:
+      - name: "name"
+      - name: "name"
+      next_page_token: "next_page_token"
