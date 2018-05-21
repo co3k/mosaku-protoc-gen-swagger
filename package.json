@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "autorest": "^2.0.4262",
     "widdershins": "^3.4.0"
   },
   "devDependencies": {},
